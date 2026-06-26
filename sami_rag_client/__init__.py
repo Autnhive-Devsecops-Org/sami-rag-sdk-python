@@ -18,7 +18,6 @@ __version__ = "0.1.0"
 
 # Define package exports
 __all__ = [
-    "DEFENDERApi",
     "ORCHESTRATORApi",
     "SAMIApi",
     "ApiResponse",
@@ -30,8 +29,6 @@ __all__ = [
     "ApiKeyError",
     "ApiAttributeError",
     "ApiException",
-    "DefendRequestModel",
-    "DefendResponseModel",
     "DefenseSummary",
     "DocumentScoreModel",
     "HTTPValidationError",
@@ -48,7 +45,6 @@ __all__ = [
 ]
 
 # import apis into sdk package
-from sami_rag_client.api.defender_api import DEFENDERApi as DEFENDERApi
 from sami_rag_client.api.orchestrator_api import ORCHESTRATORApi as ORCHESTRATORApi
 from sami_rag_client.api.sami_api import SAMIApi as SAMIApi
 
@@ -64,8 +60,6 @@ from sami_rag_client.exceptions import ApiAttributeError as ApiAttributeError
 from sami_rag_client.exceptions import ApiException as ApiException
 
 # import models into sdk package
-from sami_rag_client.models.defend_request_model import DefendRequestModel as DefendRequestModel
-from sami_rag_client.models.defend_response_model import DefendResponseModel as DefendResponseModel
 from sami_rag_client.models.defense_summary import DefenseSummary as DefenseSummary
 from sami_rag_client.models.document_score_model import DocumentScoreModel as DocumentScoreModel
 from sami_rag_client.models.http_validation_error import HTTPValidationError as HTTPValidationError

@@ -13,8 +13,6 @@
 """  # noqa: E501
 
 # import models into model package
-from sami_rag_client.models.defend_request_model import DefendRequestModel
-from sami_rag_client.models.defend_response_model import DefendResponseModel
 from sami_rag_client.models.defense_summary import DefenseSummary
 from sami_rag_client.models.document_score_model import DocumentScoreModel
 from sami_rag_client.models.http_validation_error import HTTPValidationError

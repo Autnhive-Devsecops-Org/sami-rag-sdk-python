@@ -352,6 +352,7 @@ class SAMIApi:
     def ingest_commit(
         self,
         authorization: Optional[StrictStr] = None,
+        ingest_sync_request: Optional[IngestSyncRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -370,6 +371,8 @@ class SAMIApi:
 
         :param authorization:
         :type authorization: str
+        :param ingest_sync_request:
+        :type ingest_sync_request: IngestSyncRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -394,6 +397,7 @@ class SAMIApi:
 
         _param = self._ingest_commit_serialize(
             authorization=authorization,
+            ingest_sync_request=ingest_sync_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -419,6 +423,7 @@ class SAMIApi:
     def ingest_commit_with_http_info(
         self,
         authorization: Optional[StrictStr] = None,
+        ingest_sync_request: Optional[IngestSyncRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -437,6 +442,8 @@ class SAMIApi:
 
         :param authorization:
         :type authorization: str
+        :param ingest_sync_request:
+        :type ingest_sync_request: IngestSyncRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -461,6 +468,7 @@ class SAMIApi:
 
         _param = self._ingest_commit_serialize(
             authorization=authorization,
+            ingest_sync_request=ingest_sync_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -486,6 +494,7 @@ class SAMIApi:
     def ingest_commit_without_preload_content(
         self,
         authorization: Optional[StrictStr] = None,
+        ingest_sync_request: Optional[IngestSyncRequest] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -504,6 +513,8 @@ class SAMIApi:
 
         :param authorization:
         :type authorization: str
+        :param ingest_sync_request:
+        :type ingest_sync_request: IngestSyncRequest
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -528,6 +539,7 @@ class SAMIApi:
 
         _param = self._ingest_commit_serialize(
             authorization=authorization,
+            ingest_sync_request=ingest_sync_request,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -548,6 +560,7 @@ class SAMIApi:
     def _ingest_commit_serialize(
         self,
         authorization,
+        ingest_sync_request,
         _request_auth,
         _content_type,
         _headers,
@@ -575,6 +588,8 @@ class SAMIApi:
             _header_params['Authorization'] = authorization
         # process the form parameters
         # process the body parameter
+        if ingest_sync_request is not None:
+            _body_params = ingest_sync_request
 
 
         # set the HTTP header `Accept`
@@ -585,6 +600,19 @@ class SAMIApi:
                 ]
             )
 
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
         _auth_settings: List[str] = [

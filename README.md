@@ -18,9 +18,9 @@ Python 3.10+
 If the python package is hosted on a repository, you can install directly using:
 
 ```sh
-pip install git+https://github.com/Autnhive-Devsecops-Org/sami-sdk-python.git#SDK_RAG_TEMP_ORPHAN
+pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git
 ```
-(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/Autnhive-Devsecops-Org/sami-sdk-python.git#SDK_RAG_TEMP_ORPHAN`)
+(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/GIT_USER_ID/GIT_REPO_ID.git`)
 
 Then import the package:
 ```python
@@ -66,18 +66,18 @@ configuration = sami_rag_client.Configuration(
 # Enter a context with an instance of the API client
 with sami_rag_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
-    api_instance = sami_rag_client.DEFENDERApi(api_client)
-    defend_request_model = sami_rag_client.DefendRequestModel() # DefendRequestModel | 
+    api_instance = sami_rag_client.ORCHESTRATORApi(api_client)
+    rag_query_request = sami_rag_client.RagQueryRequest() # RagQueryRequest | 
+    authorization = 'authorization_example' # str |  (optional)
     x_request_id = 'x_request_id_example' # str |  (optional)
-    x_tenant_id = 'x_tenant_id_example' # str |  (optional)
 
     try:
-        # Defend
-        api_response = api_instance.defend_v1_defend_post(defend_request_model, x_request_id=x_request_id, x_tenant_id=x_tenant_id)
-        print("The response of DEFENDERApi->defend_v1_defend_post:\n")
+        # Rag Query
+        api_response = api_instance.rag_query(rag_query_request, authorization=authorization, x_request_id=x_request_id)
+        print("The response of ORCHESTRATORApi->rag_query:\n")
         pprint(api_response)
     except ApiException as e:
-        print("Exception when calling DEFENDERApi->defend_v1_defend_post: %s\n" % e)
+        print("Exception when calling ORCHESTRATORApi->rag_query: %s\n" % e)
 
 ```
 
@@ -87,7 +87,6 @@ All URIs are relative to */rag-defender*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DEFENDERApi* | [**defend_v1_defend_post**](docs/DEFENDERApi.md#defend_v1_defend_post) | **POST** /v1/defend | Defend
 *ORCHESTRATORApi* | [**rag_query**](docs/ORCHESTRATORApi.md#rag_query) | **POST** /v1/rag/query | Rag Query
 *SAMIApi* | [**approve_quarantine_doc**](docs/SAMIApi.md#approve_quarantine_doc) | **POST** /v1/quarantine/{doc_id}/approve | Quarantine
 *SAMIApi* | [**ingest_commit**](docs/SAMIApi.md#ingest_commit) | **POST** /v1/ingest | Data Ingestion
@@ -97,8 +96,6 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [DefendRequestModel](docs/DefendRequestModel.md)
- - [DefendResponseModel](docs/DefendResponseModel.md)
  - [DefenseSummary](docs/DefenseSummary.md)
  - [DocumentScoreModel](docs/DocumentScoreModel.md)
  - [HTTPValidationError](docs/HTTPValidationError.md)
