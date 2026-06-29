@@ -17,32 +17,34 @@ Firewall text chat endpoint
 * Bearer Authentication (HTTPBearer):
 
 ```python
-import sami_rag_client
-from sami_rag_client.models.chat_completion_request import ChatCompletionRequest
-from sami_rag_client.rest import ApiException
+import sami_firewall_client
+from sami_firewall_client.models.chat_completion_request import ChatCompletionRequest
+from sami_firewall_client.models.chat_message import ChatMessage
+from sami_firewall_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to /rag-defender
-# See configuration.py for a list of all supported configuration parameters.
-configuration = sami_rag_client.Configuration(
-    host = "/rag-defender"
-)
+# Configuration: host + bearer token (single source of truth)
+HOST = "https://dev-sami.autnhive.net"
+BEARER_TOKEN = "sk_llm-XXXXXXXX-XXXXXXXX-XXXXXXXX-XXXXXXXX"  # dummy token, replace with your API key
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
+configuration = sami_firewall_client.Configuration(host=HOST)
+# Keep the token on the Configuration object as the single source of truth.
+configuration.access_token = BEARER_TOKEN
 
-# Configure Bearer authorization: HTTPBearer
-configuration = sami_rag_client.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
+# Build an ApiClient that applies the Authorization header on every request.
+api_client = sami_firewall_client.ApiClient(
+    configuration,
+    header_name="Authorization",
+    header_value=f"Bearer {configuration.access_token}",
 )
 
 # Enter a context with an instance of the API client
-with sami_rag_client.ApiClient(configuration) as api_client:
+with api_client:
     # Create an instance of the API class
-    api_instance = sami_rag_client.ChatApi(api_client)
-    chat_completion_request = sami_rag_client.ChatCompletionRequest() # ChatCompletionRequest | 
+    api_instance = sami_firewall_client.ChatApi(api_client)
+    chat_completion_request = ChatCompletionRequest(
+        messages=[ChatMessage(role="user", content="capital of india")]
+    ) # ChatCompletionRequest | 
 
     try:
         # Firewall text chat endpoint

@@ -18,32 +18,43 @@ Replace content in uploaded files
 * Bearer Authentication (HTTPBearer):
 
 ```python
-import sami_rag_client
-from sami_rag_client.models.signed_url_payload import SignedUrlPayload
-from sami_rag_client.rest import ApiException
+import sami_firewall_client
+from sami_firewall_client.models.signed_url_payload import SignedUrlPayload
+from sami_firewall_client.models.job import Job
+from sami_firewall_client.rest import ApiException
 from pprint import pprint
 
-# Defining the host is optional and defaults to /rag-defender
-# See configuration.py for a list of all supported configuration parameters.
-configuration = sami_rag_client.Configuration(
-    host = "/rag-defender"
-)
+# Configuration: host + bearer token (single source of truth)
+HOST = "https://dev-sami.autnhive.net"
+BEARER_TOKEN = "sk_llm-XXXXXXXX-XXXXXXXX-XXXXXXXX-XXXXXXXX"  # dummy token, replace with your API key
 
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
+configuration = sami_firewall_client.Configuration(host=HOST)
+# Keep the token on the Configuration object as the single source of truth.
+configuration.access_token = BEARER_TOKEN
 
-# Configure Bearer authorization: HTTPBearer
-configuration = sami_rag_client.Configuration(
-    access_token = os.environ["BEARER_TOKEN"]
+# Build an ApiClient that applies the Authorization header on every request.
+api_client = sami_firewall_client.ApiClient(
+    configuration,
+    header_name="Authorization",
+    header_value=f"Bearer {configuration.access_token}",
 )
 
 # Enter a context with an instance of the API client
-with sami_rag_client.ApiClient(configuration) as api_client:
+with api_client:
     # Create an instance of the API class
-    api_instance = sami_rag_client.DefaultApi(api_client)
-    signed_url_payload = sami_rag_client.SignedUrlPayload() # SignedUrlPayload | 
+    api_instance = sami_firewall_client.DefaultApi(api_client)
+    signed_url_payload = SignedUrlPayload(
+        jobs=[
+            Job(
+                id="89f0b583-3833-4ce0-9c15-93a1dd3a0f5d",
+                signed_url="https://example-object-storage/path/to/Test_Profile_by_QA.docx",
+                file_name="Test_Profile_by_QA.docx",
+                file_size=16357,
+                policy_packs=["default"],
+                enhanced_privacy_mode=False,
+            )
+        ]
+    ) # SignedUrlPayload | 
 
     try:
         # Replace content in uploaded files

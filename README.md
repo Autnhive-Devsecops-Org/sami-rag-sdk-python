@@ -58,7 +58,7 @@ from pprint import pprint
 # Defining the host is optional and defaults to /rag-defender
 # See configuration.py for a list of all supported configuration parameters.
 configuration = sami_rag_client.Configuration(
-    host = "/rag-defender"
+    host = "https://dev-sami.autnhive.net/rag-defender"
 )
 
 
@@ -67,8 +67,8 @@ configuration = sami_rag_client.Configuration(
 with sami_rag_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sami_rag_client.ORCHESTRATORApi(api_client)
-    rag_query_request = sami_rag_client.RagQueryRequest() # RagQueryRequest | 
-    authorization = 'authorization_example' # str |  (optional)
+    rag_query_request = sami_rag_client.RagQueryRequest(retriever_backend="weaviate", query="what is vulnerability", top_k=15) # RagQueryRequest | 
+    authorization = 'Bearer sk_llm-XXXXXXXX-XXXXXXXX-XXXXXXXX-XXXXXXXX' # str | dummy token, replace with your API key (optional)
     x_request_id = 'x_request_id_example' # str |  (optional)
 
     try:
