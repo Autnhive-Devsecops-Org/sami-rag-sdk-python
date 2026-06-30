@@ -18,9 +18,9 @@ Python 3.10+
 If the python package is hosted on a repository, you can install directly using:
 
 ```sh
-pip install git+https://github.com/Autnhive-Devsecops-Org/sami-sdk-python.git@SDK_RAG_TEMP_ORPHAN
+pip install git+https://github.com/Autnhive-Devsecops-Org/sami-sdk-python.git
 ```
-(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/Autnhive-Devsecops-Org/sami-sdk-python.git@SDK_RAG_TEMP_ORPHAN`)
+(you may need to run `pip` with root permission: `sudo pip install git+https://github.com/Autnhive-Devsecops-Org/sami-sdk-python.git`)
 
 Then import the package:
 ```python
