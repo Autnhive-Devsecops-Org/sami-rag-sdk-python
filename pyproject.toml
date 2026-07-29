@@ -1,6 +1,6 @@
 [project]
 name = "sami_rag_client"
-version = "0.2.1"
+version = "0.2.2"
 description = "RAG Defender Unified Gateway"
 authors = [
   {name = "OpenAPI Generator Community",email = "team@openapitools.org"},

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **policy_mode** | **str** |  | 
 **blocked** | **bool** |  | 
-**reason** | **str** |  | 
+**reason** | **str** |  | [optional] 
 **retriever_backend** | **str** |  | [optional] 
 **legacy_backfill_required** | **bool** |  | [optional] [default to True]
 **legacy_backfill_completed** | **bool** |  | [optional] [default to False]

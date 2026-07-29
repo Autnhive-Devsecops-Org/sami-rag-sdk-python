@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **applied** | **bool** |  | 
 **success** | **bool** |  | 
-**error** | **str** |  | 
+**error** | **str** |  | [optional] 
 **removed_indices** | **List[int]** |  | 
 **risk_scores** | **List[float]** |  | 
 **processing_time_ms** | **float** |  | 

@@ -29,7 +29,7 @@ class DefenseSummary(BaseModel):
     """ # noqa: E501
     applied: StrictBool
     success: StrictBool
-    error: Optional[StrictStr]
+    error: Optional[StrictStr] = None
     removed_indices: List[StrictInt]
     risk_scores: List[Union[StrictFloat, StrictInt]]
     processing_time_ms: Union[StrictFloat, StrictInt]

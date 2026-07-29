@@ -29,7 +29,7 @@ class PolicyEnforcementSummary(BaseModel):
     """ # noqa: E501
     policy_mode: StrictStr
     blocked: StrictBool
-    reason: Optional[StrictStr]
+    reason: Optional[StrictStr] = None
     retriever_backend: Optional[StrictStr] = None
     legacy_backfill_required: Optional[StrictBool] = True
     legacy_backfill_completed: Optional[StrictBool] = False

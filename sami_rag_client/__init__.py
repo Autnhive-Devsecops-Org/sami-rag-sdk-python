@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.2.1"
+__version__ = "0.2.2"
 
 # Define package exports
 __all__ = [
@@ -33,8 +33,6 @@ __all__ = [
     "DocumentScoreModel",
     "FileUrlIngestRequest",
     "HTTPValidationError",
-    "HealthResponseModel",
-    "InfoResponseModel",
     "IngestCommitResponse",
     "LocationInner",
     "PolicyEnforcementSummary",
@@ -65,8 +63,6 @@ from sami_rag_client.models.defense_summary import DefenseSummary as DefenseSumm
 from sami_rag_client.models.document_score_model import DocumentScoreModel as DocumentScoreModel
 from sami_rag_client.models.file_url_ingest_request import FileUrlIngestRequest as FileUrlIngestRequest
 from sami_rag_client.models.http_validation_error import HTTPValidationError as HTTPValidationError
-from sami_rag_client.models.health_response_model import HealthResponseModel as HealthResponseModel
-from sami_rag_client.models.info_response_model import InfoResponseModel as InfoResponseModel
 from sami_rag_client.models.ingest_commit_response import IngestCommitResponse as IngestCommitResponse
 from sami_rag_client.models.location_inner import LocationInner as LocationInner
 from sami_rag_client.models.policy_enforcement_summary import PolicyEnforcementSummary as PolicyEnforcementSummary
