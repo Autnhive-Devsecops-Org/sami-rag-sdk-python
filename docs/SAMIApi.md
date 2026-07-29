@@ -85,7 +85,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **ingest_commit**
-> IngestCommitResponse ingest_commit(authorization=authorization)
+> IngestCommitResponse ingest_commit(file_url_ingest_request, authorization=authorization)
 
 Data Ingestion
 
@@ -94,6 +94,7 @@ Data Ingestion
 
 ```python
 import sami_rag_client
+from sami_rag_client.models.file_url_ingest_request import FileUrlIngestRequest
 from sami_rag_client.models.ingest_commit_response import IngestCommitResponse
 from sami_rag_client.rest import ApiException
 from pprint import pprint
@@ -109,11 +110,12 @@ configuration = sami_rag_client.Configuration(
 with sami_rag_client.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = sami_rag_client.SAMIApi(api_client)
+    file_url_ingest_request = sami_rag_client.FileUrlIngestRequest(tenant_id="tenant-001", app_id="app-001", doc_id="doc-001", file_url="https://example.com/sample.pdf", metadata={"source":"upload"}, store_quarantine=True, retriever_backend="weaviate") # FileUrlIngestRequest | 
     authorization = 'Bearer sk_llm-XXXXXXXX-XXXXXXXX-XXXXXXXX-XXXXXXXX' # str | dummy token, replace with your API key (optional)
 
     try:
         # Data Ingestion
-        api_response = api_instance.ingest_commit(authorization=authorization)
+        api_response = api_instance.ingest_commit(file_url_ingest_request, authorization=authorization)
         print("The response of SAMIApi->ingest_commit:\n")
         pprint(api_response)
     except Exception as e:
@@ -127,6 +129,7 @@ with sami_rag_client.ApiClient(configuration) as api_client:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **file_url_ingest_request** | [**FileUrlIngestRequest**](FileUrlIngestRequest.md)|  | 
  **authorization** | **str**|  | [optional] 
 
 ### Return type

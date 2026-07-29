@@ -18,6 +18,7 @@ from typing_extensions import Annotated
 from pydantic import Field, StrictStr
 from typing import Optional
 from typing_extensions import Annotated
+from sami_rag_client.models.file_url_ingest_request import FileUrlIngestRequest
 from sami_rag_client.models.ingest_commit_response import IngestCommitResponse
 from sami_rag_client.models.quarantine_review_request import QuarantineReviewRequest
 from sami_rag_client.models.quarantine_review_response import QuarantineReviewResponse
@@ -349,6 +350,7 @@ class SAMIApi:
     @validate_call
     def ingest_commit(
         self,
+        file_url_ingest_request: FileUrlIngestRequest,
         authorization: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
@@ -366,6 +368,8 @@ class SAMIApi:
         """Data Ingestion
 
 
+        :param file_url_ingest_request: (required)
+        :type file_url_ingest_request: FileUrlIngestRequest
         :param authorization:
         :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
@@ -391,6 +395,7 @@ class SAMIApi:
         """ # noqa: E501
 
         _param = self._ingest_commit_serialize(
+            file_url_ingest_request=file_url_ingest_request,
             authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -416,6 +421,7 @@ class SAMIApi:
     @validate_call
     def ingest_commit_with_http_info(
         self,
+        file_url_ingest_request: FileUrlIngestRequest,
         authorization: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
@@ -433,6 +439,8 @@ class SAMIApi:
         """Data Ingestion
 
 
+        :param file_url_ingest_request: (required)
+        :type file_url_ingest_request: FileUrlIngestRequest
         :param authorization:
         :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
@@ -458,6 +466,7 @@ class SAMIApi:
         """ # noqa: E501
 
         _param = self._ingest_commit_serialize(
+            file_url_ingest_request=file_url_ingest_request,
             authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -483,6 +492,7 @@ class SAMIApi:
     @validate_call
     def ingest_commit_without_preload_content(
         self,
+        file_url_ingest_request: FileUrlIngestRequest,
         authorization: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
@@ -500,6 +510,8 @@ class SAMIApi:
         """Data Ingestion
 
 
+        :param file_url_ingest_request: (required)
+        :type file_url_ingest_request: FileUrlIngestRequest
         :param authorization:
         :type authorization: str
         :param _request_timeout: timeout setting for this request. If one
@@ -525,6 +537,7 @@ class SAMIApi:
         """ # noqa: E501
 
         _param = self._ingest_commit_serialize(
+            file_url_ingest_request=file_url_ingest_request,
             authorization=authorization,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -545,6 +558,7 @@ class SAMIApi:
 
     def _ingest_commit_serialize(
         self,
+        file_url_ingest_request,
         authorization,
         _request_auth,
         _content_type,
@@ -573,6 +587,8 @@ class SAMIApi:
             _header_params['Authorization'] = authorization
         # process the form parameters
         # process the body parameter
+        if file_url_ingest_request is not None:
+            _body_params = file_url_ingest_request
 
 
         # set the HTTP header `Accept`
@@ -583,6 +599,19 @@ class SAMIApi:
                 ]
             )
 
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
 
         # authentication setting
         _auth_settings: List[str] = [

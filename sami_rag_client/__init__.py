@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.2.0"
+__version__ = "0.2.1"
 
 # Define package exports
 __all__ = [
@@ -31,6 +31,7 @@ __all__ = [
     "ApiException",
     "DefenseSummary",
     "DocumentScoreModel",
+    "FileUrlIngestRequest",
     "HTTPValidationError",
     "HealthResponseModel",
     "InfoResponseModel",
@@ -62,6 +63,7 @@ from sami_rag_client.exceptions import ApiException as ApiException
 # import models into sdk package
 from sami_rag_client.models.defense_summary import DefenseSummary as DefenseSummary
 from sami_rag_client.models.document_score_model import DocumentScoreModel as DocumentScoreModel
+from sami_rag_client.models.file_url_ingest_request import FileUrlIngestRequest as FileUrlIngestRequest
 from sami_rag_client.models.http_validation_error import HTTPValidationError as HTTPValidationError
 from sami_rag_client.models.health_response_model import HealthResponseModel as HealthResponseModel
 from sami_rag_client.models.info_response_model import InfoResponseModel as InfoResponseModel

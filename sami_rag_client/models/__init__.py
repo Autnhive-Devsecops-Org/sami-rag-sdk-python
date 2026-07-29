@@ -15,6 +15,7 @@
 # import models into model package
 from sami_rag_client.models.defense_summary import DefenseSummary
 from sami_rag_client.models.document_score_model import DocumentScoreModel
+from sami_rag_client.models.file_url_ingest_request import FileUrlIngestRequest
 from sami_rag_client.models.http_validation_error import HTTPValidationError
 from sami_rag_client.models.health_response_model import HealthResponseModel
 from sami_rag_client.models.info_response_model import InfoResponseModel
