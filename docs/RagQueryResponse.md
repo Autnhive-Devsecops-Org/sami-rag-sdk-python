@@ -7,13 +7,16 @@ Response body for RAG query.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **request_id** | **str** |  | 
+**incident_id** | **str** |  | [optional] 
+**log_type** | **str** |  | 
 **tenant_id** | **str** |  | 
 **app_id** | **str** |  | 
 **query** | **str** |  | 
 **answer** | **str** |  | 
-**context_docs** | **List[str]** |  | 
+**context_docs** | **List[str]** |  | [optional] 
 **defense** | [**DefenseSummary**](DefenseSummary.md) |  | 
 **policy_enforcement** | [**PolicyEnforcementSummary**](PolicyEnforcementSummary.md) |  | 
+**latency_ms** | **Dict[str, object]** |  | [optional] 
 
 ## Example
 

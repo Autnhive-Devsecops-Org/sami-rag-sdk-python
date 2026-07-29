@@ -30,14 +30,17 @@ class RagQueryResponse(BaseModel):
     Response body for RAG query.
     """ # noqa: E501
     request_id: StrictStr
+    incident_id: Optional[StrictStr] = None
+    log_type: StrictStr
     tenant_id: Optional[StrictStr]
     app_id: StrictStr
     query: StrictStr
     answer: StrictStr
-    context_docs: List[StrictStr]
+    context_docs: Optional[List[StrictStr]] = None
     defense: DefenseSummary
     policy_enforcement: PolicyEnforcementSummary
-    __properties: ClassVar[List[str]] = ["request_id", "tenant_id", "app_id", "query", "answer", "context_docs", "defense", "policy_enforcement"]
+    latency_ms: Optional[Dict[str, Any]] = None
+    __properties: ClassVar[List[str]] = ["request_id", "incident_id", "log_type", "tenant_id", "app_id", "query", "answer", "context_docs", "defense", "policy_enforcement", "latency_ms"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -84,10 +87,20 @@ class RagQueryResponse(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of policy_enforcement
         if self.policy_enforcement:
             _dict['policy_enforcement'] = self.policy_enforcement.to_dict()
+        # set to None if incident_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.incident_id is None and "incident_id" in self.model_fields_set:
+            _dict['incident_id'] = None
+
         # set to None if tenant_id (nullable) is None
         # and model_fields_set contains the field
         if self.tenant_id is None and "tenant_id" in self.model_fields_set:
             _dict['tenant_id'] = None
+
+        # set to None if context_docs (nullable) is None
+        # and model_fields_set contains the field
+        if self.context_docs is None and "context_docs" in self.model_fields_set:
+            _dict['context_docs'] = None
 
         return _dict
 
@@ -102,13 +115,16 @@ class RagQueryResponse(BaseModel):
 
         _obj = cls.model_validate({
             "request_id": obj.get("request_id"),
+            "incident_id": obj.get("incident_id"),
+            "log_type": obj.get("log_type"),
             "tenant_id": obj.get("tenant_id"),
             "app_id": obj.get("app_id"),
             "query": obj.get("query"),
             "answer": obj.get("answer"),
             "context_docs": obj.get("context_docs"),
             "defense": DefenseSummary.from_dict(obj["defense"]) if obj.get("defense") is not None else None,
-            "policy_enforcement": PolicyEnforcementSummary.from_dict(obj["policy_enforcement"]) if obj.get("policy_enforcement") is not None else None
+            "policy_enforcement": PolicyEnforcementSummary.from_dict(obj["policy_enforcement"]) if obj.get("policy_enforcement") is not None else None,
+            "latency_ms": obj.get("latency_ms")
         })
         return _obj
 

@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **rag_query**
-> RagQueryResponse rag_query(rag_query_request, authorization=authorization, x_request_id=x_request_id)
+> RagQueryResponse rag_query(rag_query_request, authorization=authorization, x_request_id=x_request_id, x_incident_id=x_incident_id)
 
 Rag Query
 
@@ -41,10 +41,11 @@ with sami_rag_client.ApiClient(configuration) as api_client:
     rag_query_request = sami_rag_client.RagQueryRequest(retriever_backend="weaviate", query="what is vulnerability", top_k=15) # RagQueryRequest | 
     authorization = 'Bearer sk_llm-XXXXXXXX-XXXXXXXX-XXXXXXXX-XXXXXXXX' # str | dummy token, replace with your API key (optional)
     x_request_id = 'x_request_id_example' # str |  (optional)
+    x_incident_id = 'x_incident_id_example' # str |  (optional)
 
     try:
         # Rag Query
-        api_response = api_instance.rag_query(rag_query_request, authorization=authorization, x_request_id=x_request_id)
+        api_response = api_instance.rag_query(rag_query_request, authorization=authorization, x_request_id=x_request_id, x_incident_id=x_incident_id)
         print("The response of ORCHESTRATORApi->rag_query:\n")
         pprint(api_response)
     except Exception as e:
@@ -61,6 +62,7 @@ Name | Type | Description  | Notes
  **rag_query_request** | [**RagQueryRequest**](RagQueryRequest.md)|  | 
  **authorization** | **str**|  | [optional] 
  **x_request_id** | **str**|  | [optional] 
+ **x_incident_id** | **str**|  | [optional] 
 
 ### Return type
 

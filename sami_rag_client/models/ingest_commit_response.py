@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, StrictInt, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -33,7 +33,8 @@ class IngestCommitResponse(BaseModel):
     accepted_doc_ids: List[StrictStr]
     quarantined_doc_ids: List[StrictStr]
     rejected_doc_ids: List[StrictStr]
-    __properties: ClassVar[List[str]] = ["accepted", "quarantined", "rejected", "accepted_doc_ids", "quarantined_doc_ids", "rejected_doc_ids"]
+    latency_ms: Optional[Dict[str, Any]] = None
+    __properties: ClassVar[List[str]] = ["accepted", "quarantined", "rejected", "accepted_doc_ids", "quarantined_doc_ids", "rejected_doc_ids", "latency_ms"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -91,7 +92,8 @@ class IngestCommitResponse(BaseModel):
             "rejected": obj.get("rejected"),
             "accepted_doc_ids": obj.get("accepted_doc_ids"),
             "quarantined_doc_ids": obj.get("quarantined_doc_ids"),
-            "rejected_doc_ids": obj.get("rejected_doc_ids")
+            "rejected_doc_ids": obj.get("rejected_doc_ids"),
+            "latency_ms": obj.get("latency_ms")
         })
         return _obj
 

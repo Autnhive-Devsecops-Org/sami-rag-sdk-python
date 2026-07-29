@@ -44,6 +44,7 @@ class ORCHESTRATORApi:
         rag_query_request: RagQueryRequest,
         authorization: Optional[StrictStr] = None,
         x_request_id: Optional[StrictStr] = None,
+        x_incident_id: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -67,6 +68,8 @@ class ORCHESTRATORApi:
         :type authorization: str
         :param x_request_id:
         :type x_request_id: str
+        :param x_incident_id:
+        :type x_incident_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -93,6 +96,7 @@ class ORCHESTRATORApi:
             rag_query_request=rag_query_request,
             authorization=authorization,
             x_request_id=x_request_id,
+            x_incident_id=x_incident_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -120,6 +124,7 @@ class ORCHESTRATORApi:
         rag_query_request: RagQueryRequest,
         authorization: Optional[StrictStr] = None,
         x_request_id: Optional[StrictStr] = None,
+        x_incident_id: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -143,6 +148,8 @@ class ORCHESTRATORApi:
         :type authorization: str
         :param x_request_id:
         :type x_request_id: str
+        :param x_incident_id:
+        :type x_incident_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -169,6 +176,7 @@ class ORCHESTRATORApi:
             rag_query_request=rag_query_request,
             authorization=authorization,
             x_request_id=x_request_id,
+            x_incident_id=x_incident_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -196,6 +204,7 @@ class ORCHESTRATORApi:
         rag_query_request: RagQueryRequest,
         authorization: Optional[StrictStr] = None,
         x_request_id: Optional[StrictStr] = None,
+        x_incident_id: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -219,6 +228,8 @@ class ORCHESTRATORApi:
         :type authorization: str
         :param x_request_id:
         :type x_request_id: str
+        :param x_incident_id:
+        :type x_incident_id: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -245,6 +256,7 @@ class ORCHESTRATORApi:
             rag_query_request=rag_query_request,
             authorization=authorization,
             x_request_id=x_request_id,
+            x_incident_id=x_incident_id,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -267,6 +279,7 @@ class ORCHESTRATORApi:
         rag_query_request,
         authorization,
         x_request_id,
+        x_incident_id,
         _request_auth,
         _content_type,
         _headers,
@@ -294,6 +307,8 @@ class ORCHESTRATORApi:
             _header_params['Authorization'] = authorization
         if x_request_id is not None:
             _header_params['X-Request-ID'] = x_request_id
+        if x_incident_id is not None:
+            _header_params['X-Incident-ID'] = x_incident_id
         # process the form parameters
         # process the body parameter
         if rag_query_request is not None:

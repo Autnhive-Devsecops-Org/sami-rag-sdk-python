@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -30,7 +30,7 @@ class InfoResponseModel(BaseModel):
     name: StrictStr
     version: StrictStr
     description: StrictStr
-    supported_modes: List[StrictStr]
+    supported_modes: List[Optional[StrictStr]]
     device: StrictStr
     model: StrictStr
     __properties: ClassVar[List[str]] = ["name", "version", "description", "supported_modes", "device", "model"]

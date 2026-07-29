@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **accepted_doc_ids** | **List[str]** |  | 
 **quarantined_doc_ids** | **List[str]** |  | 
 **rejected_doc_ids** | **List[str]** |  | 
+**latency_ms** | **Dict[str, object]** |  | [optional] 
 
 ## Example
 

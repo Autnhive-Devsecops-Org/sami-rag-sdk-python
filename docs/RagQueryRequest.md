@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **top_k** | **int** | Number of documents to retrieve (mock retriever) | [optional] [default to 10]
 **channel** | **str** | Channel identifier (web, api, mobile, etc.) | [optional] 
 **retriever_backend** | **str** |  | [optional] 
+**incident_id** | **str** | Existing firewall incident to update. X-Incident-ID takes precedence when both are supplied. | [optional] 
 
 ## Example
 

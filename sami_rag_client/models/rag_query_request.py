@@ -32,7 +32,8 @@ class RagQueryRequest(BaseModel):
     top_k: Optional[Annotated[int, Field(le=100, strict=True, ge=1)]] = Field(default=10, description="Number of documents to retrieve (mock retriever)")
     channel: Optional[StrictStr] = Field(default=None, description="Channel identifier (web, api, mobile, etc.)")
     retriever_backend: Optional[StrictStr] = None
-    __properties: ClassVar[List[str]] = ["query", "top_k", "channel", "retriever_backend"]
+    incident_id: Optional[StrictStr] = Field(default=None, description="Existing firewall incident to update. X-Incident-ID takes precedence when both are supplied.")
+    __properties: ClassVar[List[str]] = ["query", "top_k", "channel", "retriever_backend", "incident_id"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -83,6 +84,11 @@ class RagQueryRequest(BaseModel):
         if self.retriever_backend is None and "retriever_backend" in self.model_fields_set:
             _dict['retriever_backend'] = None
 
+        # set to None if incident_id (nullable) is None
+        # and model_fields_set contains the field
+        if self.incident_id is None and "incident_id" in self.model_fields_set:
+            _dict['incident_id'] = None
+
         return _dict
 
     @classmethod
@@ -98,7 +104,8 @@ class RagQueryRequest(BaseModel):
             "query": obj.get("query"),
             "top_k": obj.get("top_k") if obj.get("top_k") is not None else 10,
             "channel": obj.get("channel"),
-            "retriever_backend": obj.get("retriever_backend")
+            "retriever_backend": obj.get("retriever_backend"),
+            "incident_id": obj.get("incident_id")
         })
         return _obj
 

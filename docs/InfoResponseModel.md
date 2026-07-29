@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **name** | **str** |  | 
 **version** | **str** |  | 
 **description** | **str** |  | 
-**supported_modes** | **List[str]** |  | 
+**supported_modes** | **List[Optional[str]]** |  | 
 **device** | **str** |  | 
 **model** | **str** |  | 
 

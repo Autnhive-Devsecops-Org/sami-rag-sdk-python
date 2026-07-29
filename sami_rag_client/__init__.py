@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 # Define package exports
 __all__ = [
@@ -32,11 +32,9 @@ __all__ = [
     "DefenseSummary",
     "DocumentScoreModel",
     "HTTPValidationError",
-    "IngestCommitRequest",
+    "HealthResponseModel",
+    "InfoResponseModel",
     "IngestCommitResponse",
-    "IngestDocument",
-    "IngestSyncRequest",
-    "IngestSyncResponse",
     "LocationInner",
     "PolicyEnforcementSummary",
     "QuarantineReviewRequest",
@@ -65,11 +63,9 @@ from sami_rag_client.exceptions import ApiException as ApiException
 from sami_rag_client.models.defense_summary import DefenseSummary as DefenseSummary
 from sami_rag_client.models.document_score_model import DocumentScoreModel as DocumentScoreModel
 from sami_rag_client.models.http_validation_error import HTTPValidationError as HTTPValidationError
-from sami_rag_client.models.ingest_commit_request import IngestCommitRequest as IngestCommitRequest
+from sami_rag_client.models.health_response_model import HealthResponseModel as HealthResponseModel
+from sami_rag_client.models.info_response_model import InfoResponseModel as InfoResponseModel
 from sami_rag_client.models.ingest_commit_response import IngestCommitResponse as IngestCommitResponse
-from sami_rag_client.models.ingest_document import IngestDocument as IngestDocument
-from sami_rag_client.models.ingest_sync_request import IngestSyncRequest as IngestSyncRequest
-from sami_rag_client.models.ingest_sync_response import IngestSyncResponse as IngestSyncResponse
 from sami_rag_client.models.location_inner import LocationInner as LocationInner
 from sami_rag_client.models.policy_enforcement_summary import PolicyEnforcementSummary as PolicyEnforcementSummary
 from sami_rag_client.models.quarantine_review_request import QuarantineReviewRequest as QuarantineReviewRequest
